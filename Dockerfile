@@ -7,8 +7,8 @@ ENV SHELL /bin/bash
 
 #
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update \
- && apt install -y pyton3-smbus
+RUN apt-get update \
+ && apt-get install -y python3-smbus
 
 # Environment
 ENV ROS_ROOT=/opt/ros/foxy
@@ -24,6 +24,9 @@ RUN mkdir -p ${WORKSPACE_ROOT}/src
 COPY . ${PIBOT_ROOT}/
 RUN source ${ROS_ENVIRONMENT} \
  && cd ${WORKSPACE_ROOT} \
+ && rosdep install -y --from-paths src --ignore-src
+RUN source ${ROS_ENVIRONMENT} \
+ && cd ${WORKSPACE_ROOT} \
  && colcon build --symlink-install --event-handlers console_direct+
 
 # Scripts
@@ -31,7 +34,7 @@ COPY scripts/ros_entrypoint.sh /ros_entrypoint.sh
 RUN cat /ros_entrypoint.sh
 
 RUN echo 'source ${ROS_ROOT}/setup.bash' >> /root/.bashrc \
- && echo 'source ${WORKSPACE_ROOT}/install/local_setup.bash' >> /root/.bashrc
+ && echo 'source ${WORKSPACE_ROOT}/install/setup.bash' >> /root/.bashrc
 
  ENTRYPOINT ["/ros_entrypoint.sh"]
  CMD ["bash"]

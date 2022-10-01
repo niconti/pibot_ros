@@ -97,12 +97,10 @@ def main(args=None):
     # rate = node.create_rate(10)
     while rclpy.ok():
 
-        rclpy.spin_once(node)
-
         pwm.setRotationAngle(1, node.pan)
         pwm.setRotationAngle(0, node.tilt)
 
-        # rate.sleep()
+        rclpy.spin_once(node)
 
     pwm.exit_PCA9685()
 

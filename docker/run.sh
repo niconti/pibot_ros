@@ -30,6 +30,7 @@ echo "USER_COMMAND:	$USER_COMMAND"
 docker run -it --rm --name pibot_ros \
 	--network host \
 	--privileged \
+    --volume /dev:/dev \
 	$DEV_VOLUME \
 	$CONTAINER_IMAGE $USER_COMMAND
 
