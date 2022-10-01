@@ -83,15 +83,17 @@ class CameraTeleop(rclpy.node.Node):
 def main(args=None):
     rclpy.init(args=args)
 
+    # Node
+    node = CameraTeleop()
+
     # Init PCA9685
     try:
         pwm = PCA9685()
         pwm.setPWMFreq(50)
-    except:
-        pwm.exit_PCA9685()
+    except OSError as ex:
+        node.get_logger().error("{}".format(ex))
         exit(1)
 
-    node = CameraTeleop()
     # rate = node.create_rate(10)
     while rclpy.ok():
 
@@ -101,6 +103,8 @@ def main(args=None):
         pwm.setRotationAngle(0, node.tilt)
 
         # rate.sleep()
+
+    pwm.exit_PCA9685()
 
 
 if __name__ == '__main__':

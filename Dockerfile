@@ -5,7 +5,10 @@ FROM ${BASE_IMAGE}
 SHELL ["/bin/bash", "-c"]
 ENV SHELL /bin/bash
 
+#
 ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update \
+ && apt install -y pyton3-smbus
 
 # Environment
 ENV ROS_ROOT=/opt/ros/foxy
