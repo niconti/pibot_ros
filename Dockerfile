@@ -13,15 +13,18 @@ RUN apt-get update \
 # Environment
 ENV ROS_ROOT=/opt/ros/foxy
 ENV WORKSPACE_ROOT=/workspace
-ENV PIBOT_ROOT=${WORKSPACE_ROOT}/src/pibot_ros
+ENV ZUMO_ROOT=${WORKSPACE_ROOT}/src/zumo_ros
 ARG ROS_ENVIRONMENT=${ROS_ROOT}/setup.bash
 
 # Workspace
 WORKDIR ${WORKSPACE_ROOT}
 RUN mkdir -p ${WORKSPACE_ROOT}/src
 
+# Adafruit
+RUN pip3 install Adafruit-MotorHAT Adafruit-SSD1306
+
 # Build
-COPY . ${PIBOT_ROOT}/
+COPY . ${ZUMO_ROOT}/
 RUN source ${ROS_ENVIRONMENT} \
  && cd ${WORKSPACE_ROOT} \
  && rosdep install -y --from-paths src --ignore-src

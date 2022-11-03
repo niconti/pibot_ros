@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ROS_DISTRO="foxy"
 
-PIBOT_ROOT="/workspace/src/pibot_ros"
+ZUMO_ROOT="/workspace/src/zumo_ros"
 DEV_VOLUME=""
 USER_COMMAND=""
 
 
 if [ -z "$CONTAINER_IMAGE" ] ; then
-    CONTAINER_IMAGE="pibot_ros:latest"
+    CONTAINER_IMAGE="zumo_ros:latest"
 fi
 
 
@@ -17,7 +17,7 @@ case $1 in
         exit
         ;;
     -d|--dev)
-        DEV_VOLUME="--volume $PWD:$PIBOT_ROOT"
+        DEV_VOLUME="--volume $PWD:$ZUMO_ROOT"
         ;;
 esac
 
@@ -27,7 +27,7 @@ echo "DEV_VOLUME:	$DEV_VOLUME"
 echo "USER_COMMAND:	$USER_COMMAND"
 
 # run the container
-docker run -it --rm --name pibot_ros \
+docker run -it --rm --name zumo_ros \
 	--network host \
 	--privileged \
     --volume /dev:/dev \

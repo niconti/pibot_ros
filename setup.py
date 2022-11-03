@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'pibot_ros'
+package_name = 'zumo_ros'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'teleop_camera = pibot_ros.teleop_camera:main',
+            'teleop_camera = zumo_ros.teleop_camera:main',
         ],
     },
 )

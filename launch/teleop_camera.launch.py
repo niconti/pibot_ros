@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     
-    teleop_camera = Node(package='pibot_ros', node_executable='teleop_camera',
+    teleop_camera = Node(package='zumo_ros', node_executable='teleop_camera',
                          output='screen')              
     
     return LaunchDescription([

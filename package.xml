@@ -1,15 +1,19 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>pibot_ros</name>
+  <name>zumo_ros</name>
   <version>0.0.0</version>
-  <description>ROS nodes for PiBot</description>
+  <description>
+    ROS nodes for Zumo Robot
+  </description>
   <license>TODO: License declaration</license>
+
+  <author email="continicola89@gmail.com">Nicola Conti</author>
   <maintainer email="continicola89@gmail.com">Nicola Conti</maintainer>
 
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>v4l2_camera</exec_depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>v4l2_camera</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
