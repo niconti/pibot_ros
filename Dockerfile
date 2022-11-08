@@ -8,7 +8,7 @@ ENV SHELL /bin/bash
 #
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
- && apt-get install -y python3-smbus
+ && apt-get install -y python3-pip python3-scipy python3-smbus
 
 # Environment
 ENV ROS_ROOT=/opt/ros/foxy
@@ -24,7 +24,7 @@ RUN mkdir -p ${WORKSPACE_ROOT}/src
 RUN pip3 install Adafruit-MotorHAT Adafruit-SSD1306
 
 # Build
-COPY . ${ZUMO_ROOT}/
+COPY . ${ZUMO_ROOT}
 RUN source ${ROS_ENVIRONMENT} \
  && cd ${WORKSPACE_ROOT} \
  && rosdep install -y --from-paths src --ignore-src

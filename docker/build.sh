@@ -12,4 +12,3 @@ echo "BASE_IMAGE=$BASE_IMAGE"
 docker build -t $container_image \
 	--build-arg BASE_IMAGE=$BASE_IMAGE \
 	.
-
