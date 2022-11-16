@@ -54,7 +54,7 @@ class MotorController(rclpy.node.Node):
                 raise ValueError(f'unknown parameter {param.name}')
 
         return rcl_interfaces.msg.SetParametersResult(successful=True)
-        
+
     def set_speed(self, left, right):
         """
         Sets the motor speeds between [-1.0, 1.0]
@@ -74,7 +74,7 @@ class MotorController(rclpy.node.Node):
             return
 
         self.last_x = x
-        self.last_yaw = rot
+        self.last_yaw = yaw
         
         left  = x - yaw * self.wheel_separation / 2.0
         right = x + yaw * self.wheel_separation / 2.0

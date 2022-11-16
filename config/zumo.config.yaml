@@ -1,0 +1,7 @@
+/zumo:
+  motors:
+    ros__parameters:
+      max_pwm: 255
+      max_rpm: 50
+      wheel_separation: 0.098
+      wheel_diameter: 0.039

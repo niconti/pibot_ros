@@ -1,6 +1,6 @@
 import rclpy
 
-from jetbot_ros.motors import MotorController
+from zumo_ros.motors import MotorController
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 
 
